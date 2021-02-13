@@ -348,9 +348,9 @@
                 <app.name>BluebookPid</app.name>
                 <workdir>/project/gtps/bib_bluebookpid</workdir>
                 <lake.root>/lake</lake.root>
-                <jdbc.url>jdbc:postgresql://dbiblx01.dns21.socgen:12400/bib_db</jdbc.url>
-                <jdbc.user>bib_db</jdbc.user>
-                <jdbc.password>BIB_P@ssword</jdbc.password>
+                <jdbc.url></jdbc.url>
+                <jdbc.user></jdbc.user>
+                <jdbc.password></jdbc.password>
                 <jdbc.schema>bib_db</jdbc.schema>
                 <jdbc.batch-size>1000</jdbc.batch-size>
                 <ref-accounts>/project/gtps/bib_bluebookpid/resources/data/ref_comptes.csv</ref-accounts>
@@ -367,9 +367,9 @@
                 <app.name>BluebookPid</app.name>
                 <workdir>/project-h/gtps/bib_bluebookpid</workdir>
                 <lake.root>/lake-h</lake.root>
-                <jdbc.url>jdbc:postgresql://hbiblx02.dns21.socgen:12400/bib_db</jdbc.url>
-                <jdbc.user>bib_db</jdbc.user>
-                <jdbc.password>BIB_P@ssword</jdbc.password>
+                <jdbc.url></jdbc.url>
+                <jdbc.user></jdbc.user>
+                <jdbc.password></jdbc.password>
                 <jdbc.schema>bib_db</jdbc.schema>
                 <jdbc.batch-size>1000</jdbc.batch-size>
                 <ref-accounts>/project-h/gtps/bib_bluebookpid/resources/data/ref_comptes.csv</ref-accounts>
@@ -386,9 +386,9 @@
                 <app.name>BluebookPid</app.name>
                 <workdir>/project/gtps/bib_bluebookpid</workdir>
                 <lake.root>/lake</lake.root>
-                <jdbc.url>jdbc:postgresql://pbiblx01.dns20.socgen:12400/bib_db</jdbc.url>
-                <jdbc.user>bib_db</jdbc.user>
-                <jdbc.password>BIB_P@ssword</jdbc.password>
+                <jdbc.url></jdbc.url>
+                <jdbc.user></jdbc.user>
+                <jdbc.password></jdbc.password>
                 <jdbc.schema>bib_db</jdbc.schema>
                 <jdbc.batch-size>1000</jdbc.batch-size>
                 <ref-accounts>/project/gtps/bib_bluebookpid/resources/data/ref_comptes.csv</ref-accounts>
