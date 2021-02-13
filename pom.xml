@@ -311,7 +311,7 @@
                                     <finalName>${project.artifactId}-${project.version}-${app.env}</finalName>
                                     <appendAssemblyId>false</appendAssemblyId>
                                     <descriptors>
-                                        <descriptor>src/main/assembly/zip.xml</descriptor>
+                                        <descriptor>src/main/assembly/assembly.xml</descriptor>
                                     </descriptors>
                                 </configuration>
                             </execution>
