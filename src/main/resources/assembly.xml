@@ -1,0 +1,61 @@
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.1.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.1.0 http://maven.apache.org/xsd/assembly-2.1.0.xsd">
+    <id>zip</id>
+    <includeBaseDirectory>true</includeBaseDirectory>
+    <baseDirectory>bluebook_pid_${build.timestamp}</baseDirectory>
+
+    <formats>
+        <format>zip</format>
+    </formats>
+
+    <fileSets>
+        <fileSet>
+            <directory>${project.build.directory}/classes/data</directory>
+            <outputDirectory>/resources/data</outputDirectory>
+            <lineEnding>keep</lineEnding>
+        </fileSet>
+        <fileSet>
+            <directory>${project.basedir}/scripts</directory>
+            <outputDirectory>/scripts</outputDirectory>
+            <lineEnding>unix</lineEnding>
+            <fileMode>0744</fileMode>
+        </fileSet>
+    </fileSets>
+    <files>
+        <file>
+            <source>${project.build.directory}/${project.artifactId}-${project.version}.jar</source>
+            <outputDirectory>/</outputDirectory>
+            <destName>bluebook-pid.jar</destName>
+        </file>
+        <file>
+            <source>${project.basedir}/scripts/kinit.sh</source>
+            <outputDirectory>/scripts</outputDirectory>
+            <lineEnding>unix</lineEnding>
+            <fileMode>0744</fileMode>
+        </file>
+
+        <file>
+            <source>${project.build.directory}/extra-resources/application-placeholder.properties</source>
+            <outputDirectory>/resources</outputDirectory>
+            <destName>application.properties</destName>
+            <lineEnding>keep</lineEnding>
+        </file>
+        <file>
+            <source>${project.build.directory}/extra-resources/initialize.sh</source>
+            <outputDirectory>/scripts</outputDirectory>
+            <destName>initialize.sh</destName>
+            <lineEnding>keep</lineEnding>
+        </file>
+        <file>
+            <source>${project.build.directory}/extra-resources/dt.markdown</source>
+            <outputDirectory>/</outputDirectory>
+            <lineEnding>keep</lineEnding>
+        </file>
+        <file>
+            <source>${project.build.directory}/classes/log4j.properties</source>
+            <outputDirectory>/resources</outputDirectory>
+            <lineEnding>keep</lineEnding>
+        </file>
+    </files>
+</assembly>
