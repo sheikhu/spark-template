@@ -11,14 +11,19 @@
     <properties>
         <jdk.version>1.8</jdk.version>
         <scala.compat.version>2.12</scala.compat.version>
-        <scala.version>2.12.11</scala.version>
+        <scala.version>2.12.4</scala.version>
         <spark.version>3.0.1</spark.version>
         <scalatest.version>3.0.4</scalatest.version>
         <postgresql.version>42.2.2</postgresql.version>
-        <scopt.version>3.7.1</scopt.version>
+        <scopt.version>4.0.0</scopt.version>
         <typesafe.config.version>1.4.1</typesafe.config.version>
         <mockito.scala.version>1.14.8</mockito.scala.version>
         <maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- App properties -->
+        <app.name>HelloApp</app.name>
+
     </properties>
 
     <build>
@@ -196,7 +201,7 @@
                                 <rule>
                                     <element>CLASS</element>
                                     <excludes>
-                                        <exclude>com.asimio.demo.Application</exclude>
+                                        <exclude>com.template.spark.Main</exclude>
                                     </excludes>
                                     <limits>
                                         <limit>
@@ -310,7 +315,7 @@
                                     <finalName>${project.artifactId}-${project.version}-${app.env}</finalName>
                                     <appendAssemblyId>false</appendAssemblyId>
                                     <descriptors>
-                                        <descriptor>src/main/assembly/assembly.xml</descriptor>
+                                        <descriptor>src/main/resources/assembly.xml</descriptor>
                                     </descriptors>
                                 </configuration>
                             </execution>
@@ -346,57 +351,45 @@
             </activation>
             <properties>
                 <app.env>dev</app.env>
-                <app.queue_name>GTPS</app.queue_name>
-                <app.name>BluebookPid</app.name>
-                <workdir>/project/gtps/bib_bluebookpid</workdir>
+                <app.queue_name>QUEUE_NAME</app.queue_name>
+                <workdir>/project</workdir>
                 <lake.root>/lake</lake.root>
                 <jdbc.url></jdbc.url>
                 <jdbc.user></jdbc.user>
                 <jdbc.password></jdbc.password>
-                <jdbc.schema>bib_db</jdbc.schema>
+                <jdbc.schema>schema</jdbc.schema>
                 <jdbc.batch-size>1000</jdbc.batch-size>
-                <ref-accounts>/project/gtps/bib_bluebookpid/resources/data/ref_comptes.csv</ref-accounts>
-                <ref-currencies>/project/gtps/bib_bluebookpid/resources/data/currencies.csv</ref-currencies>
-                <ref-countries>/project/gtps/bib_bluebookpid/resources/data/countries.csv</ref-countries>
-                <hive.database-name>project_gtps_bib_bluebookpid</hive.database-name>
+                <hive.database-name>hive_database</hive.database-name>
             </properties>
         </profile>
         <profile>
             <id>hml</id>
             <properties>
                 <app.env>hml</app.env>
-                <app.queue_name>GTPSPH</app.queue_name>
-                <app.name>BluebookPid</app.name>
-                <workdir>/project-h/gtps/bib_bluebookpid</workdir>
-                <lake.root>/lake-h</lake.root>
+                <app.queue_name>QUEUE_NAME</app.queue_name>
+                <workdir>/project</workdir>
+                <lake.root>/lake</lake.root>
                 <jdbc.url></jdbc.url>
                 <jdbc.user></jdbc.user>
                 <jdbc.password></jdbc.password>
-                <jdbc.schema>bib_db</jdbc.schema>
+                <jdbc.schema>schema</jdbc.schema>
                 <jdbc.batch-size>1000</jdbc.batch-size>
-                <ref-accounts>/project-h/gtps/bib_bluebookpid/resources/data/ref_comptes.csv</ref-accounts>
-                <ref-currencies>/project-h/gtps/bib_bluebookpid/resources/data/currencies.csv</ref-currencies>
-                <ref-countries>/project-h/gtps/bib_bluebookpid/resources/data/countries.csv</ref-countries>
-                <hive.database-name>project_gtps_bib_bluebookpid</hive.database-name>
+                <hive.database-name>hive_database</hive.database-name>
             </properties>
         </profile>
         <profile>
             <id>prod</id>
             <properties>
                 <app.env>prod</app.env>
-                <app.queue_name>REMP</app.queue_name>
-                <app.name>BluebookPid</app.name>
-                <workdir>/project/gtps/bib_bluebookpid</workdir>
+                <app.queue_name>QUEUE_NAME</app.queue_name>
+                <workdir>/project</workdir>
                 <lake.root>/lake</lake.root>
                 <jdbc.url></jdbc.url>
                 <jdbc.user></jdbc.user>
                 <jdbc.password></jdbc.password>
-                <jdbc.schema>bib_db</jdbc.schema>
+                <jdbc.schema>schema</jdbc.schema>
                 <jdbc.batch-size>1000</jdbc.batch-size>
-                <ref-accounts>/project/gtps/bib_bluebookpid/resources/data/ref_comptes.csv</ref-accounts>
-                <ref-currencies>/project/gtps/bib_bluebookpid/resources/data/currencies.csv</ref-currencies>
-                <ref-countries>/project/gtps/bib_bluebookpid/resources/data/countries.csv</ref-countries>
-                <hive.database-name>project_gtps_bib_bluebookpid</hive.database-name>
+                <hive.database-name>hive_database</hive.database-name>
             </properties>
         </profile>
     </profiles>

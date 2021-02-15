@@ -3,16 +3,16 @@
           xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.1.0 http://maven.apache.org/xsd/assembly-2.1.0.xsd">
     <id>zip</id>
     <includeBaseDirectory>true</includeBaseDirectory>
-    <baseDirectory>bluebook_pid_${build.timestamp}</baseDirectory>
+    <baseDirectory>hello</baseDirectory>
 
     <formats>
-        <format>zip</format>
+        <format>tar.gz</format>
     </formats>
 
     <fileSets>
         <fileSet>
             <directory>${project.build.directory}/classes/data</directory>
-            <outputDirectory>/resources/data</outputDirectory>
+            <outputDirectory>/resources/datasets</outputDirectory>
             <lineEnding>keep</lineEnding>
         </fileSet>
         <fileSet>
@@ -26,32 +26,15 @@
         <file>
             <source>${project.build.directory}/${project.artifactId}-${project.version}.jar</source>
             <outputDirectory>/</outputDirectory>
-            <destName>bluebook-pid.jar</destName>
+            <destName>hello.jar</destName>
         </file>
         <file>
-            <source>${project.basedir}/scripts/kinit.sh</source>
+            <source>${project.basedir}/scripts/job.sh</source>
             <outputDirectory>/scripts</outputDirectory>
             <lineEnding>unix</lineEnding>
             <fileMode>0744</fileMode>
         </file>
 
-        <file>
-            <source>${project.build.directory}/extra-resources/application-placeholder.properties</source>
-            <outputDirectory>/resources</outputDirectory>
-            <destName>application.properties</destName>
-            <lineEnding>keep</lineEnding>
-        </file>
-        <file>
-            <source>${project.build.directory}/extra-resources/initialize.sh</source>
-            <outputDirectory>/scripts</outputDirectory>
-            <destName>initialize.sh</destName>
-            <lineEnding>keep</lineEnding>
-        </file>
-        <file>
-            <source>${project.build.directory}/extra-resources/dt.markdown</source>
-            <outputDirectory>/</outputDirectory>
-            <lineEnding>keep</lineEnding>
-        </file>
         <file>
             <source>${project.build.directory}/classes/log4j.properties</source>
             <outputDirectory>/resources</outputDirectory>

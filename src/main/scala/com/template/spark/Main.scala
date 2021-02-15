@@ -1,22 +1,36 @@
 package com.template.spark
 
+import com.template.spark.config.{AppConfig, InputParser}
+import com.template.spark.io.IOHandler
+import com.template.spark.listener.DefaultListener
 import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.functions._
+import com.template.spark.models._
 
 object Main extends App {
 
-    val spark = SparkSession.builder()
-      .master("local")
-      .getOrCreate()
+  val parametersOption = new InputParser(args).parse
 
-    spark.sparkContext.setLogLevel("WARN")
-    import spark.implicits._
+  if (parametersOption.isEmpty) sys.exit(-1)
 
-    val users = Seq(
-        ("Joe", 30),
-        ("Jane", 20)
-    ).toDF("name", "age")
+  val spark = SparkSession
+    .builder()
+    .getOrCreate()
 
-    users.show(false)
+  import spark.implicits._
 
-    spark.stop
+  val options = parametersOption.get
+
+  val ioHandler = new IOHandler(spark, new AppConfig)
+
+  val employeesDf = ioHandler.loadCsv(
+    options.input,
+    Map(
+      "header" -> "true",
+      "delimiter" -> ";"
+    )
+  )
+  employeesDf.groupBy("gender").agg(count("*").as("total")).show
+
+  spark.stop
 }

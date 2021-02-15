@@ -55,6 +55,10 @@ out/
 # mpeltonen/sbt-idea plugin
 .idea_modules/
 
+# metals
+.metals/
+.scalafmt.conf
+
 # JIRA plugin
 atlassian-ide-plugin.xml
 
@@ -209,3 +213,7 @@ spark-warehouse/
 checkpoints
 checkpoints/
 src/main/resources/twitter4j.properties
+
+*.jar
+*.tar.gz
+*.zip

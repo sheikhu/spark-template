@@ -1,0 +1,31 @@
+version: "3.7"
+services:
+  spark-master:
+    image: spark-master:latest
+    hostname: "spark-master"
+    ports:
+      - "4040:4040"
+      - "9090:8080"
+      - "7077:7077"
+    volumes:
+       - ./apps:/opt/spark-apps
+       - ./data:/opt/spark-data
+    environment:
+      - "SPARK_LOCAL_IP=spark-master"
+    networks:
+      - cluster
+
+  spark-worker:
+    image: spark-worker:latest
+    depends_on:
+      - spark-master
+    env_file:
+      - .env
+    volumes:
+       - ./apps:/opt/spark-apps
+       - ./data:/opt/spark-data
+    networks:
+      - cluster
+networks:
+  cluster:
+    driver: "bridge"
