@@ -59,6 +59,11 @@ out/
 .metals/
 .scalafmt.conf
 
+# Board
+board/
+
+.bsp/
+.idea*/
 # JIRA plugin
 atlassian-ide-plugin.xml
 

@@ -2,12 +2,14 @@ package com.template.spark
 
 import com.template.spark.config.{AppConfig, InputParser}
 import com.template.spark.io.IOHandler
-import com.template.spark.listener.DefaultListener
+import com.template.spark.models.Employee
+import org.apache.log4j.Logger
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions._
-import com.template.spark.models._
 
 object Main extends App {
+
+  protected val log = Logger.getLogger(getClass.getName)
 
   val parametersOption = new InputParser(args).parse
 
@@ -17,8 +19,9 @@ object Main extends App {
     .builder()
     .getOrCreate()
 
-  import spark.implicits._
+  spark.sparkContext.setLogLevel("WARN")
 
+  import spark.implicits._
   val options = parametersOption.get
 
   val ioHandler = new IOHandler(spark, new AppConfig)
@@ -30,7 +33,15 @@ object Main extends App {
       "delimiter" -> ";"
     )
   )
-  employeesDf.groupBy("gender").agg(count("*").as("total")).show
+
+
+
+
+  employeesDf
+    .groupBy("gender")
+    .agg(count("*")
+    .as("total"))
+    .show
 
   spark.stop
 }

@@ -11,6 +11,9 @@ package object models {
 
   case class Department(id: String, name: String)
 
-  case class JobParameters(input: String = "", format: String = "csv", output: String = "", verbose: Boolean = false)
+  case class JobParameters(input: String = "",
+                           inputFormat: String = "csv",
+                           outputFormat: String = "csv",
+                           output: String = "", verbose: Boolean = false, debug: Boolean = false)
 
 }
